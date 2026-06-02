@@ -67,7 +67,7 @@ $(document).ready(function () {
   logoResponsiveColor();
   //targetLinks();  //not ready yet until configsites is working
   triggerLink();
-  contentFilter();
+  //contentFilter();
   audioclips();
   prodClickThru();
   sumnolnk();
