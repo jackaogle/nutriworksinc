@@ -615,13 +615,26 @@ function contentFilter(){
     if(chk.indexOf('c-ftr') != -1){
       $(this).find('.summary-v2-block').addClass('content-filter-summary');
 
+      // JOgle - 20260602 Patch: Squarespace no longer reliably outputs data-block-json on summary-v2-block.
+      // Default imageAspectRatio to 1 so contentFilter() can still build the blog category filter UI.
+		
+      //old method for getting aspect ratio from data-block-json:
       //var aspectRatio = JSON.parse($('.summary-v2-block.content-filter-summary').attr('data-block-json'));
-	  
-	  var blockJson = $(this).find('.summary-v2-block.content-filter-summary').attr('data-block-json');
-      var imageAspectRatio = 1.5;
+		
+	  // start patch:
+	  //var blockJson = $(this).find('.summary-v2-block.content-filter-summary').attr('data-block-json');
+      //var imageAspectRatio = 1.5;
 
-      if (blockJson) {
-        imageAspectRatio = JSON.parse(blockJson).imageAspectRatio || 1.5;
+      //if (blockJson) {
+      //  imageAspectRatio = JSON.parse(blockJson).imageAspectRatio || 1.5;
+      //}
+      // end patch
+
+      //New method to get aspect ratio from changed Squarespace carousel output, sets a default value for future-proofing:
+      var imageAspectRatio = 1.5;
+      var ratioAttr = $(this).find('.summary-block-wrapper').attr('data-image-aspect-ratio');
+      if (ratioAttr) {
+        imageAspectRatio = parseFloat(ratioAttr) || 1.5;
       }
 
       /* Check Display Type: Panel, List, Grid */
