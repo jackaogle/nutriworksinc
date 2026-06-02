@@ -335,6 +335,7 @@ a.social-link:before {
 .summary-v2-block.content-filter-summary .summary-items .summary-item .summary-thumbnail {
   overflow: hidden;
   position: relative;
+  height: auto;
 }
 .summary-v2-block.content-filter-summary .summary-items .summary-item .summary-thumbnail:before {
   content: "";
